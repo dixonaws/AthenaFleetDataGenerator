@@ -26,11 +26,27 @@ import random
 
 
 def main():
-    print "GenerateData v1.0"
+    print "AthenaFleetDataGenerator v1.0"
+
+    # the number of records to generate
+    intRecordsToGenerate=10000
 
     # write 1,000 individual records
-    for i in range(0, 10000):
-        # form the random data
+    for i in range(0, intRecordsToGenerate):
+        # form the random data with the following fields:
+        # rental date
+        # dropoff date (default all to 3-10-2017)
+        # renter id
+        # rental agreement number
+        # rental invoice number
+        # vehicle tag (license plate number)
+        # rental state
+        # vehicle class (default to SRAR)
+        # distance driven (up to 900 miles)
+        # airport code
+        # rental duration
+        # pickup location
+
         var_rental_date = str(random.randint(01, 12)) + "-" + str(random.randint(01, 30)) + "-" + str(
             random.randint(2010, 2016))
         var_dropoff_date = "03-10-2017"
