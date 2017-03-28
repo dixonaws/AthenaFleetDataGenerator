@@ -43,3 +43,7 @@ ehthumbs.db
 Thumbs.db
 *.swp
 
+# the generated data  #
+######################
+data/*
+data/

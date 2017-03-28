@@ -17,4 +17,9 @@ GenerateData.py generates 10,000 fake car rental invoice records with the follow
 <li>rental_duration int</li>
 <li>charges float</li>
 </ul>
-
+<p>
+Run the data generation script with the following 
+command to generate 10,000 records in ./data/csv/invoice<i>x</i>.csv where
+<i>x</i> is the invoice number (tested with Python 
+2.7.10 on macOS 10.12.4)
+<code>python GenerateData.py 10000</code>
