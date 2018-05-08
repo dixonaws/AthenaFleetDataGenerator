@@ -91,10 +91,14 @@ def main():
         f.close()
 
         if (i % (5 * intPoint) == 0):
-            sys.stdout.write("\r[" + "=" * (i / intIncrement) + " " * ((intRecordsToGenerate - i) / intIncrement) + "]" + str(i / intPoint) + "%")
+            sys.stdout.write("\r[" + "=" * (i / intIncrement) + " " * ((intRecordsToGenerate - i) / intIncrement) + "] " + str(i / intPoint) + "%")
             sys.stdout.flush()
 
+
     # for i
+
+    sys.stdout.write("\r[====================] 100%")
+    sys.stdout.flush()
 
     print ' Done.'
 
