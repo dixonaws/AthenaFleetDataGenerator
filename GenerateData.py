@@ -2,6 +2,7 @@
 
 import time
 import random
+import sys
 
 # generate some fake invoice data
 # each CSV should contain one invoice
@@ -26,13 +27,16 @@ import random
 
 
 def main():
-    print "AthenaFleetDataGenerator v1.0"
-    print "Generate fake rental car invoices in ./data."
+    print "AthenaFleetDataGenerator v1.1"
+    print "Generate fake rental car invoices in ./data"
+    print '==========================================='
+    print 'Preparing to generate ' + str(sys.argv[1]) + ' invoice(s)...'
 
     # the number of records to generate
-    intRecordsToGenerate=10000
+    intRecordsToGenerate=int(sys.argv[1])
 
-    # write 1,000 individual records
+    # write intRecordsToGenerate individual records
+    print 'Writing records to ./data/csv...'
     for i in range(0, intRecordsToGenerate):
         # form the random data with the following fields:
         # rental date (random date between 2010 and 2016)
@@ -78,10 +82,15 @@ def main():
                 var_charges))
 
         var_filename="data/csv/invoice" + str(i) + ".csv"
-        print("Writing " + var_filename)
+
         f=open(var_filename,"w")
         f.write(var_record)
         f.close()
+
+        sys.stdout.write('\r')
+        sys.stdout.write("[%-20s] %d%%" % ('=' * i, 5 * i))
+        sys.stdout.flush()
+
     # for i
 
 main()
