@@ -26,6 +26,16 @@ directories yourself. macOS with an SSD takes less than
 60 seconds to generate 10,000 sample invoice records.<p>
 <code>python GenerateData.py 10000</code>
 <p>&nbsp;<p>
+Output from the command line looks like:
+<code>
+AthenaFleetDataGenerator v1.1
+Generate fake rental car invoices in ./data/csv
+===========================================
+Preparing to generate 20000 invoice(s)...
+Writing records to ./data/csv...
+[====================] 100% Done.
+</code>
+
 
 This repo also incudes a program to sync the sample
 invoices to s3. SyncData.sh uses the AWS CLI to sync

@@ -23,14 +23,16 @@ for i in $(ls -lah data/csv/*.csv |awk '{print $9}'); do
     echo -n "."
 done
 
-echo "Moving gzip files...
+# Move gzipped invoices to ./data/gzip
+echo "Moving gzip files..."
 for i in $(ls -lah data/csv |grep gz |awk '{print $9}'); do
-    print $i
+    echo $i
     mv data/csv/$i data/gzip/
 done
 
-echo "Uploading to S3..."
-#aws --profile dixonaws@amazon.com s3 sync data/gzip s3://fleetbriefing-data/gzip --acl "public-read" --delete
+echo "Uploading invoices to S3..."
+aws --profile dixonaws@amazon.com s3 sync data/ s3://fleetbriefing-data/data/ --acl "public-read" --delete
+
 
 
 
