@@ -6,3 +6,4 @@ FROM fleetbriefing.invoices_csv
 GROUP BY  pickup_location
 ORDER BY  Rentals DESC
 LIMIT 10
+
