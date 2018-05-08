@@ -16,22 +16,22 @@ function check_cmdline_arguments {
 }
 
 # generate gzip files, quick and dirty
-echo "Generating list of CSV files, gzipping, moving... "
-for i in $(ls -lah data/csv/*.csv |awk '{print $9}'); do
-
-    gzip --fast --keep -f $i
-    echo -n "."
-done
+#echo "Generating list of CSV files, gzipping, moving... "
+#for i in $(ls -lah data/csv/*.csv |awk '{print $9}'); do
+#
+#    gzip --fast --keep -f $i
+#    echo -n "."
+#done
 
 # Move gzipped invoices to ./data/gzip
-echo "Moving gzip files..."
-for i in $(ls -lah data/csv |grep gz |awk '{print $9}'); do
-    echo $i
-    mv data/csv/$i data/gzip/
-done
+#echo "Moving gzip files..."
+#for i in $(ls -lah data/csv |grep gz |awk '{print $9}'); do
+#    echo $i
+#    mv data/csv/$i data/gzip/
+#done
 
 echo "Uploading invoices to S3..."
-aws --profile dixonaws@amazon.com s3 sync data/ s3://fleetbriefing-data/data/ --acl "public-read" --delete
+aws s3 sync /tmp/data/ s3://fleetbriefing-data/data/ --acl "public-read" --delete
 
 
 

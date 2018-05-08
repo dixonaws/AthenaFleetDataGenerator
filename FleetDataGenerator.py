@@ -27,9 +27,9 @@ import sys
 
 
 def main():
-    print "AthenaFleetDataGenerator v1.1"
-    print "Generate fake rental car invoices in ./data"
-    print '==========================================='
+    print "FleetDataGenerator v1.1"
+    print "Generate simulated rental car invoices in /tmp/data/csv"
+    print '--------------------------------------------------'
     print 'Preparing to generate ' + str(sys.argv[1]) + ' invoice(s)...'
 
     # the number of records to generate
@@ -84,12 +84,13 @@ def main():
                 var_distance_driven) + "," + var_pickup_location + "," + str(var_rental_duration) + "," + str(
                 var_charges))
 
-        var_filename="data/csv/invoice" + str(i) + ".csv"
+        var_filename="/tmp/data/csv/invoice" + str(i) + ".csv"
 
         f=open(var_filename,"w")
         f.write(var_record)
         f.close()
 
+        # print a progress bar
         if (i % (5 * intPoint) == 0):
             sys.stdout.write("\r[" + "=" * (i / intIncrement) + " " * ((intRecordsToGenerate - i) / intIncrement) + "] " + str(i / intPoint) + "%")
             sys.stdout.flush()
@@ -97,9 +98,9 @@ def main():
 
     # for i
 
+    # print progress complete
     sys.stdout.write("\r[====================] 100%")
     sys.stdout.flush()
-
     print ' Done.'
 
 main()

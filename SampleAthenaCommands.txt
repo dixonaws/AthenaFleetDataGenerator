@@ -1,0 +1,3 @@
+# execute SQL DLL to create a table in a database called 'fleetbriefing'
+aws athena start-query-execution --cli-input-json fileb://query-execution.json
+

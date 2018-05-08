@@ -1,0 +1,8 @@
+# Show top 10 rental cities by number of rentals and revenue
+SELECT pickup_location,
+         count(rental_date) AS Rentals,
+         sum(charges) AS Revenue
+FROM fleetbriefing.invoices_csv
+GROUP BY  pickup_location
+ORDER BY  Rentals DESC
+LIMIT 10
