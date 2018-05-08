@@ -3,7 +3,7 @@
 import time
 import random
 
-# generate some invoice data
+# generate some fake invoice data
 # each CSV should contain one invoice
 # filenames do not matter
 # structure of the files must be as follows:
@@ -27,6 +27,7 @@ import random
 
 def main():
     print "AthenaFleetDataGenerator v1.0"
+    print "Generate fake rental car invoices in ./data."
 
     # the number of records to generate
     intRecordsToGenerate=10000
@@ -34,7 +35,7 @@ def main():
     # write 1,000 individual records
     for i in range(0, intRecordsToGenerate):
         # form the random data with the following fields:
-        # rental date
+        # rental date (random date between 2010 and 2016)
         # dropoff date (default all to 3-10-2017)
         # renter id
         # rental agreement number
@@ -50,16 +51,18 @@ def main():
         var_rental_date = str(random.randint(01, 12)) + "-" + str(random.randint(01, 30)) + "-" + str(
             random.randint(2010, 2016))
         var_dropoff_date = "03-10-2017"
-        var_renterid = str(random.randint(10000, 99999))
-        var_rental_agreement = str(random.randint(10000, 99999))
-        var_rental_invoice = str(random.randint(10000, 99999))
+        var_renterid = str(random.randint(10000, 99999))            # random renterid
+        var_rental_agreement = str(random.randint(10000, 99999))    # random string for rental agreement
+        var_rental_invoice = str(random.randint(10000, 99999))      # random string for invoice
 
         # generate a random vehicle tag
         tag=random.sample(["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E","F","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"], 6)
 
         var_vehicle_tag = str(tag[0]) + str(tag[1]) + str(tag[2]) + str(tag[3]) + str(tag[4]) + str(tag[5])
-        var_vehicle_state = "FL"
-        var_vehicle_class = "SRAR"
+        vehicle_state=(["FL", "OH", "MI", "MN", "GA", "VA"])
+        var_vehicle_state = (random.sample(vehicle_state, 1))[0]
+        vehicle_class=(["SRAR", "SUV", "SEDAN", "TRUCK", "COUPE", "SPECIAL", "LUXURY"])
+        var_vehicle_class = (random.sample(vehicle_class, 1))[0]
         var_distance_driven = str(random.randint(0, 900))
 
         # choose from a list of random airport codes
