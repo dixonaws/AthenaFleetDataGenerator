@@ -7,7 +7,7 @@ def main():
 	print 'Records: ' + str(intRecords)
 
 	# print a maximum of 50 characters
-	print 'Records%50 = ' + str(intRecords%50)
+	print 'Records%50 = ' + str(10%intRecords)
 
 main()
 

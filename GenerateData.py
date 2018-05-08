@@ -35,9 +35,12 @@ def main():
     # the number of records to generate
     intRecordsToGenerate=int(sys.argv[1])
 
+    intPoint = intRecordsToGenerate / 100
+    intIncrement = intRecordsToGenerate / 20
+
     # write intRecordsToGenerate individual records
     print 'Writing records to ./data/csv...'
-    for i in range(0, intRecordsToGenerate):
+    for i in range(1, intRecordsToGenerate):
         # form the random data with the following fields:
         # rental date (random date between 2010 and 2016)
         # dropoff date (default all to 3-10-2017)
@@ -87,10 +90,12 @@ def main():
         f.write(var_record)
         f.close()
 
-        sys.stdout.write('\r')
-        sys.stdout.write("[%-20s] %d%%" % ('=' * i, 5 * i))
-        sys.stdout.flush()
+        if (i % (5 * intPoint) == 0):
+            sys.stdout.write("\r[" + "=" * (i / intIncrement) + " " * ((intRecordsToGenerate - i) / intIncrement) + "]" + str(i / intPoint) + "%")
+            sys.stdout.flush()
 
     # for i
+
+    print ' Done.'
 
 main()
